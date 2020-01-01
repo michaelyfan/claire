@@ -3,6 +3,7 @@
 A Flutter rewrite of (Claire)[https://github.com/samgamage/claire]. WIP.
 
 ### TODOs
+* finish login flow (handle login errors)
 * user registration
 * complete our Freemium/Premium business model
 * more language support
