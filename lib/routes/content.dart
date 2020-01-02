@@ -1,6 +1,9 @@
+import 'package:claire/classes.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:claire/api.dart';
 import 'package:claire/routes/profile.dart';
-import 'package:flutter/material.dart';
 
 class Content extends StatefulWidget {
   @override
@@ -26,13 +29,9 @@ class ContentState extends State<Content> {
   Widget build(BuildContext context) {
     Widget currentView;
     if (view == 0) {
-      currentView = Text(
-        'SWIPES VIEW!'
-      );
+      currentView = Swiper();
     } else { // view == 1
-      currentView = Text(
-        'CHAT VIEW!'
-      );
+      currentView = Chat();
     }
 
     return Column(
@@ -45,7 +44,7 @@ class ContentState extends State<Content> {
         ),
         RaisedButton(
             onPressed: () => switchView(0),
-            child: Text('Swipes view')
+            child: Text('Swiper view')
         ),
         RaisedButton(
             onPressed: () => switchView(1),
@@ -60,7 +59,8 @@ class ContentState extends State<Content> {
             },
             child: Text('My profile')
         ),
-        Container(
+        Flexible(
+          flex: 1,
           child: currentView,
         ),
         RaisedButton(
@@ -70,4 +70,67 @@ class ContentState extends State<Content> {
       ],
     );
   }
+}
+
+class Swiper extends StatefulWidget {
+  @override
+  State<Swiper> createState() {
+    return SwiperState();
+  }
+}
+
+class SwiperState extends State<Swiper> {
+  
+  @override
+  void initState() {
+    print('SwiperState widget rendered');
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: StreamBuilder<List<User>>(
+        stream: getUsers(null,0,0),
+        builder: (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
+          if (!snapshot.hasData) {
+            return Text('Something went wrong... :(');
+          }
+          List<User> users = snapshot.data;
+          return Container(
+            child: ListView.builder(
+              itemCount: users.length,
+              itemBuilder: (BuildContext context, int index) {
+                User thisUser = users[index];
+                return Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: Text('${thisUser.name} -- ${thisUser.age}'),
+                );
+              }
+            )
+          );
+        },
+      )
+    );
+  }
+}
+
+class Chat extends StatefulWidget {
+  @override
+  State<Chat> createState() {
+    return ChatState();
+  }
+}
+
+class ChatState extends State<Chat> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Text('Chat is under construction');
+  }
+}
+
+class OtherUser {
+
 }
