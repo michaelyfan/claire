@@ -1,6 +1,6 @@
 # claire
 
-A Flutter rewrite of (Claire)[https://github.com/samgamage/claire]. WIP.
+A Flutter rewrite of [Claire](https://github.com/samgamage/claire). WIP.
 
 ### TODOs
 * finish login flow (handle login errors)
