@@ -14,5 +14,7 @@ A Flutter rewrite of [Claire](https://github.com/samgamage/claire). WIP.
 * a user's swiped array will become polluted over time
 * expand profile pic compatibility beyond .jpg, or convert it before upload somehow
 * remove user from list of potential swipes when they're in a conversation
-* disable swipe screen outright when user is in a conversation
+* consider disabling swipe screen outright when user is in a conversation
 * test on actual iOS devices
+* general error handling
+* move many functions (such as entering a conversation after discovering a swipe) to a server, for security

@@ -54,7 +54,7 @@ class MainState extends State<Main> {
       ),
       body: new StreamBuilder(
         stream: listenAuthState(),
-        builder: (context, snapshot) {
+        builder: (_, AsyncSnapshot<FirebaseUser> snapshot) {
           if (snapshot.hasData) {
             return Content();
           }

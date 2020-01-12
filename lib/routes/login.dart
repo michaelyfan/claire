@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../api.dart';
 
@@ -23,11 +22,10 @@ class LoginState extends State<Login> {
 
   void _handleSubmit() async {
     if (_formKey.currentState.validate()) {
-      final FirebaseUser user = await login(
+      await login(
         usernameController.text.trim(),
         passwordController.text.trim()
       );
-      print("User ID: ${user.uid}");
     }
   }
 
